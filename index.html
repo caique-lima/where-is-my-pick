@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Is My Pick — STL Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Where Is My Pick</h1>
+      <p>Design and download a 3D-printable guitar pick</p>
+    </header>
+
+    <main>
+      <aside id="controls">
+
+        <div class="control-group">
+          <label>Shape</label>
+          <div class="button-group" id="shape-selector">
+            <button class="active" data-shape="standard">Standard</button>
+            <button data-shape="jazz">Jazz</button>
+            <button data-shape="triangle">Triangle</button>
+            <button data-shape="teardrop">Teardrop</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="width">Width <span class="val" id="width-val">26</span> mm</label>
+          <input type="range" id="width" min="15" max="45" value="26" step="0.5">
+        </div>
+
+        <div class="control-group">
+          <label for="height">Height <span class="val" id="height-val">30</span> mm</label>
+          <input type="range" id="height" min="20" max="55" value="30" step="0.5">
+        </div>
+
+        <div class="control-group">
+          <label for="thickness">Thickness <span class="val" id="thickness-val">1.0</span> mm</label>
+          <input type="range" id="thickness" min="0.5" max="3.5" value="1.0" step="0.1">
+        </div>
+
+        <div class="control-group">
+          <label for="tip-sharpness">Tip Sharpness <span class="val" id="tip-val">50</span>%</label>
+          <input type="range" id="tip-sharpness" min="5" max="95" value="50" step="1">
+        </div>
+
+        <div class="control-group">
+          <label>Preview Color</label>
+          <div class="color-row">
+            <button class="color-btn active" data-color="#e8793a" style="background:#e8793a"></button>
+            <button class="color-btn" data-color="#3a7be8" style="background:#3a7be8"></button>
+            <button class="color-btn" data-color="#e83a6f" style="background:#e83a6f"></button>
+            <button class="color-btn" data-color="#3ae87b" style="background:#3ae87b"></button>
+            <button class="color-btn" data-color="#f0e060" style="background:#f0e060"></button>
+            <button class="color-btn" data-color="#d0d0d0" style="background:#d0d0d0"></button>
+          </div>
+        </div>
+
+        <button id="download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download STL
+        </button>
+
+        <p class="hint">Units are in mm — ready for any slicer</p>
+      </aside>
+
+      <section id="preview">
+        <canvas id="canvas"></canvas>
+        <div id="hint-orbit">Click &amp; drag to rotate · Scroll to zoom</div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
